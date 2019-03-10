@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ .Site.Title | safeHTML }}</title>
+  <meta name="description" content="{{ .Page.Description | safeHTML }}">
+  <meta name="keywords" content="{{ delimit .Page.Keywords ", " }}">
+</head>
+<body>
+  <h1>H1（.Site.Title）：{{ .Site.Title | safeHTML }}</h1>
+  <p class="">layouts/index.htmlを表示しています。  </p>
+  <dl>
+    {{ range .Site.Menus.news }}
+    <a href="{{ .URL }}"><dt>{{ .Page.Date.Year | safeHTML }}.{{ index $.Site.Data.jmonth (printf "%d" .Page.Date.Month) }}.{{ .Page.Date.Day }}</dt><dd>{{ .Page.Title }}（{{ .Page.Date.Year | safeHTML }}年{{ index $.Site.Data.jmonth (printf "%d" .Page.Date.Month) }}月{{ .Page.Date.Day }}日　{{ .Page.Params.author }}）</dd></a>
+    {{ end }}
+  </dl>
+  <p class="">Keywords：{{ delimit .Page.Keywords ", " }}</p>
+</body>
+</html>

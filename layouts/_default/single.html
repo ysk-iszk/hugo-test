@@ -1,0 +1,11 @@
+<h1>{{ .Title }}</h1>
+<p>layouts/_default/single.htmlテンプレートの内容を表示しています。</p>
+<p>
+  出典: {{ .Page.Params.author }}
+</p>
+<p>
+  日付：{{ .Page.Date.Year | safeHTML }}年{{ index $.Site.Data.jmonth (printf "%d" .Page.Date.Month) }}月{{ .Page.Date.Day }}日
+</p>
+<main>
+{{ .Content }}
+</main>

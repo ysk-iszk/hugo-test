@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="{{ "assets/css/main.css" | relURL }}">
+  <title>{{ if not .IsHome }}{{ .Title }}｜{{ end }}{{ .Site.Title }}</title>
+  {{ partial "head/favicon" . }}
+  <meta name="description" content="{{ with .Page.Description | safeHTML }}{{ else }}ディスクリプションが読み込めていません{{ end }}">
+  <meta name="keywords" content="{{ .Page.Keywords }}}">
+  <link rel="stylesheet" href="{{ .Css }}" type="text/css">
+  <meta property="og:title" content="{{ .Page.Title }}" />
+  <meta property="og:type" content=" ページの種類" />
+  <meta property="og:url" content=" ページの URL" />
+  <meta property="og:image" content=" サムネイル画像の URL" />
+  <meta property="og:site_name" content="サイト名" />
+  <meta property="og:description" content=" ページのディスクリプション" />
+</head>
+<body>
+  <div id="root">
+    <div id="pageTitle"><a href="{{ "/" | relURL }}">{{ .Site.Title }}</a></div>
+    {{ partial "menu" . }}
+    <main id="main">
+      {{ block "main" . }}main ブロックが見つかりません。{{ end }}
+    </main>
+  </div>
+</body>
+</html>
